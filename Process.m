@@ -1,6 +1,4 @@
-% Experiment:
-    % ---------------
-    % load processed experimental run:
+ % load processed experimental run:
     matName1 = frameName(['processedExp_' matName1Series],rpmAll(iRun));
     matName2 = '';
     matName = fullfile(dirNameSeries,matName1,matName2);
@@ -78,24 +76,4 @@
     dissipMesh(DRigidMesh<0) = 0;
     divKEfluxMesh(DAtmMesh<0) = nan;
     divKEfluxMesh(DRigidMesh<0) = 0;
-    
-    figure
-%    subplot(2,2,2*(iRun-1)+2)
-    switch mapOption
-        case 1
-            mypcolor(xMesh*1000,yMesh*1000,dissipMesh)
-        case 2
-            mypcolor(xMesh*1000,yMesh*1000,divKEfluxMesh) 
-        case 3
-            mypcolor(xMesh*1000,yMesh*1000,divKEfluxMesh+dissipMesh) 
-    end
-    hold on
-    contour(XGrid*1000,YGrid*1000,PsiGrid,PsiRefExp*[-1:0.125:-0.125],'k-','lineWidth',lineWidth)
-    plot(xyFlow(:,1)*1000,xyFlow(:,2)*1000,'k-','lineWidth',2*lineWidth)
-    plot(xyRigid(:,1)*1000,xyRigid(:,2)*1000,'k-','lineWidth',2*lineWidth)
-    shading flat
-    axis equal
-    axis(xyAxis*1000)
-    caxis(caxScaleAll(iRun)*[-1 1])
-    axis off
     
